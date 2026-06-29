@@ -211,10 +211,10 @@
           </form>
         </div>
         <div id="signup-done" hidden>
-          <h2>Almost there.</h2>
+          <h2>You are in.</h2>
           <p class="sub" style="font-size:1rem;color:var(--ink-soft)">
-            Check your inbox and click the confirmation link. The book lands in your email
-            the moment you confirm. If you do not see it, peek in spam or the Promotions tab.
+            Taking you to your book now. If it does not load,
+            <a href="download.html" style="color:var(--rust);font-weight:700">tap here to download it</a>.
           </p>
         </div>
       </div>
@@ -258,11 +258,10 @@
     form.addEventListener('submit', function(){
       var email = document.getElementById('email');
       if(!email.value || !email.checkValidity()) return; // let native validation show
-      // form posts to the hidden iframe; swap to the confirmation state
-      setTimeout(function(){
-        document.getElementById('signup-form').hidden = true;
-        document.getElementById('signup-done').hidden = false;
-      }, 350);
+      // form posts to the hidden iframe; show brief state, then deliver the book
+      document.getElementById('signup-form').hidden = true;
+      document.getElementById('signup-done').hidden = false;
+      setTimeout(function(){ window.location.href = 'download.html'; }, 1100);
     });
   })();
 </script>
